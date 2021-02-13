@@ -1,7 +1,7 @@
 #! /bin/bash
 GCC=${CROSS_COMPILE}gcc
 
-if [ ! -f $1.c ]; then
+if [[ "$1" == "" ]] || [[ ! -f $1.c ]]; then
     echo "not found $1.c in $CODETOP/src/app "
     exit
 fi
