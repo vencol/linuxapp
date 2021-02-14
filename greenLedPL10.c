@@ -1,7 +1,6 @@
 #include <errno.h>
 #include <fcntl.h>
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
 #include <sys/ioctl.h>
 #include <unistd.h>
@@ -15,6 +14,8 @@ int main(int argc, char **argv)
     char chrdev_name[20];
     int fd, ret;
     
+	//如果不知道gpiochipN对应的是GPIO?，可以查看/sys/bus/gpio/devices/gpiochip0/of_node# cat st,bank-name 输出结果是GPIOA
+    //或者查看dts中对应的驱动文件
     strcpy(chrdev_name, "/dev/gpiochip1");
     
     fd = open(chrdev_name, 0);

@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include <stdio.h>
-#include <poll.h>
+#include <sys/poll.h>
 
 /*
   *usage ./buttonstest
