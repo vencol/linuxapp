@@ -23,7 +23,7 @@ int main(int argc, char **argv)
     
     signal(SIGINT, my_handler);
 	//如果不知道gpiochipN对应的是GPIO?，可以查看/sys/bus/gpio/devices/gpiochip0/of_node# cat st,bank-name 输出结果是GPIOA
-    //或者查看dts中对应的驱动文件
+    //或者查看dts中对应的驱动文件，或者cat /sys/bus/gpio/devices/gpiochip0/of_node/compatible
     strcpy(chrdev_name, "/dev/gpiochip0");
     
     fd = open(chrdev_name, 0);
