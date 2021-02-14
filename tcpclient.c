@@ -9,6 +9,8 @@
 #include<unistd.h>
 #define MAXLINE 4096
 
+#define TOPORT  6666
+
 int main(int argc, char** argv){
     int   sockfd, len;
     char  recvline[4096], sendline[4096];
@@ -26,7 +28,7 @@ int main(int argc, char** argv){
 
     memset(&servaddr, 0, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
-    servaddr.sin_port = htons(6666);
+    servaddr.sin_port = htons(TOPORT);
     if( inet_pton(AF_INET, argv[1], &servaddr.sin_addr) <= 0){
         printf("inet_pton error for %s\n",argv[1]);
         return -1;

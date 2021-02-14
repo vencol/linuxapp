@@ -9,6 +9,7 @@
 #include<unistd.h>
 #include <pthread.h>
 
+#define TOPORT  6666
 #define MAXLINE 4096
 #define MAXCLIENT 5
 int connectfd[MAXCLIENT] = {0};
@@ -26,7 +27,7 @@ static void* serverTask (void* arg)
     memset(&servaddr, 0, sizeof(servaddr));
     servaddr.sin_family = AF_INET;
     servaddr.sin_addr.s_addr = htonl(INADDR_ANY);
-    servaddr.sin_port = htons(6666);
+    servaddr.sin_port = htons(TOPORT);
 
     i = 1;
     if (setsockopt(listenfd, SOL_SOCKET, SO_REUSEADDR, &i, sizeof(i)) < 0){
