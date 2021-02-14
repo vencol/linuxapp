@@ -7,6 +7,22 @@
  
 #include <linux/gpio.h>
  
+//  设备树配置如下
+// 	leds {
+// 		compatible = "gpio-leds";
+
+// 		pwr_led {
+// 			label = "orangepi:green:pwr";
+// 			gpios = <&r_pio 0 10 GPIO_ACTIVE_HIGH>;
+// 			default-state = "on";
+// 		};
+
+// 		status_led {
+// 			label = "orangepi:red:status";
+// 			gpios = <&pio 0 15 GPIO_ACTIVE_HIGH>;
+// 		};
+// 	};
+
 int main(int argc, char **argv)
 {
     struct gpiohandle_request req;

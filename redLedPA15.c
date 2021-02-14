@@ -8,6 +8,23 @@
 #include <linux/gpio.h>
 #include <signal.h> // signal functions
  
+
+//  设备树配置如下
+// 	leds {
+// 		compatible = "gpio-leds";
+
+// 		pwr_led {
+// 			label = "orangepi:green:pwr";
+// 			gpios = <&r_pio 0 10 GPIO_ACTIVE_HIGH>;
+// 			default-state = "on";
+// 		};
+
+// 		status_led {
+// 			label = "orangepi:red:status";
+// 			gpios = <&pio 0 15 GPIO_ACTIVE_HIGH>;
+// 		};
+// 	};
+
 volatile sig_atomic_t ctrlcflag = 0;
 static void my_handler(int sig){ // can be called asynchronously
   ctrlcflag = 1; // set flag

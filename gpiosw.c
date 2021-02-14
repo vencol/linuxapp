@@ -8,6 +8,36 @@
  
 #include <linux/gpio.h>
  
+// 设备树配置
+// 		r_pio: pinctrl@1f02c00 {
+// 			compatible = "allwinner,sun8i-h3-r-pinctrl";
+// 			reg = <0x01f02c00 0x400>;
+// 			interrupt-parent = <&r_intc>;
+// 			interrupts = <GIC_SPI 45 IRQ_TYPE_LEVEL_HIGH>;
+// 			clocks = <&r_ccu CLK_APB0_PIO>, <&osc24M>, <&rtc 0>;
+// 			clock-names = "apb", "hosc", "losc";
+// 			gpio-controller;
+// 			#gpio-cells = <3>;
+// 			interrupt-controller;
+// 			#interrupt-cells = <3>;
+
+// 			r_ir_rx_pin: r-ir-rx-pin {
+// 				pins = "PL11";
+// 				function = "s_cir_rx";
+// 			};
+
+// 			r_i2c_pins: r-i2c-pins {
+// 				pins = "PL0", "PL1";
+// 				function = "s_i2c";
+// 			};
+
+// 			r_pwm_pin: r-pwm-pin {
+// 				pins = "PL10";
+// 				function = "s_pwm";
+// 			};
+// 		};
+
+
 #define USE_POLL 0
 
 #if USE_POLL

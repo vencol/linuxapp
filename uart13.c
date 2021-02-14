@@ -15,6 +15,66 @@
 #include <sys/select.h>    //select函数
 #include <pthread.h>
 
+
+// 设备树配置
+// 		pio: pinctrl@1c20800 {
+// 			/* compatible is in per SoC .dtsi file */
+// 			reg = <0x01c20800 0x400>;
+// 			interrupt-parent = <&r_intc>;
+// 			interrupts = <GIC_SPI 11 IRQ_TYPE_LEVEL_HIGH>,
+// 				     <GIC_SPI 17 IRQ_TYPE_LEVEL_HIGH>;
+// 			clocks = <&ccu CLK_BUS_PIO>, <&osc24M>, <&rtc 0>;
+// 			clock-names = "apb", "hosc", "losc";
+// 			gpio-controller;
+// 			#gpio-cells = <3>;
+// 			interrupt-controller;
+// 			#interrupt-cells = <3>;
+            
+// 			uart1_pins: uart1-pins {
+// 				pins = "PG6", "PG7";
+// 				function = "uart1";
+// 			};
+// 			uart3_pins: uart3-pins {
+// 				pins = "PA13", "PA14";
+// 				function = "uart3";
+// 			};
+//         }   
+// 		uart1: serial@1c28400 {
+// 			compatible = "snps,dw-apb-uart";
+// 			reg = <0x01c28400 0x400>;
+// 			interrupts = <GIC_SPI 1 IRQ_TYPE_LEVEL_HIGH>;
+// 			reg-shift = <2>;
+// 			reg-io-width = <4>;
+// 			clocks = <&ccu CLK_BUS_UART1>;
+// 			resets = <&ccu RST_BUS_UART1>;
+// 			dmas = <&dma 7>, <&dma 7>;
+// 			dma-names = "rx", "tx";
+// 			status = "disabled";
+// 		};   
+// &uart1 {
+// 	pinctrl-names = "default";
+// 	pinctrl-0 = <&uart1_pins>;
+// 	status = "okay";
+// };
+// 		uart3: serial@1c28c00 {
+// 			compatible = "snps,dw-apb-uart";
+// 			reg = <0x01c28c00 0x400>;
+// 			interrupts = <GIC_SPI 3 IRQ_TYPE_LEVEL_HIGH>;
+// 			reg-shift = <2>;
+// 			reg-io-width = <4>;
+// 			clocks = <&ccu CLK_BUS_UART3>;
+// 			resets = <&ccu RST_BUS_UART3>;
+// 			dmas = <&dma 9>, <&dma 9>;
+// 			dma-names = "rx", "tx";
+// 			status = "disabled";
+// 		};
+// &uart3 {
+// 	pinctrl-names = "default";
+// 	pinctrl-0 = <&uart3_pins>;
+// 	status = "okay";
+// };
+
+
 //修改设备树使能对应的文件，相关的设备文件可以通过，dmesg | grep tty查看得知
 #define DEV_NAME1    "/dev/ttyS1"    ///< 串口设备
 #define DEV_NAME2    "/dev/ttyS2"    ///< 串口设备

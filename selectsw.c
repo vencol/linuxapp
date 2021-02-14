@@ -5,9 +5,18 @@
 #include <stdio.h>
 #include <sys/select.h>
 
-/*
-  *usage ./buttonstest
-  */
+
+// 设备树配置
+// 	r_gpio_keys {
+// 		compatible = "gpio-keys";
+
+// 		sw4 {
+// 			label = "sw4";
+// 			linux,code = <KEY_POWER>;
+// 			gpios = <&r_pio 0 3 GPIO_ACTIVE_LOW>;
+// 		};
+// 	};
+
 int main(int argc, char **argv)
 {
     int fd;
