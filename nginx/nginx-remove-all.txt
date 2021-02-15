@@ -1,0 +1,23 @@
+vencol@vencolpc:~$ dpkg --get-selections  | grep nginx
+libnginx-mod-http-image-filter                  install
+libnginx-mod-http-xslt-filter                   install
+libnginx-mod-mail                               install
+libnginx-mod-stream                             install
+nginx-common                                    install
+nginx-core                                      install
+vencol@vencolpc:~$ sudo apt-get --purge remove nginx
+
+
+ol/code/nginx/src/zlib-1.2.11 -I out \
+		        -o out/src/core/ngx_spinlock.o \
+				        src/core/ngx_spinlock.c
+						arm-linux-gnueabihf-gcc -c -pipe  -O -W -Wall -Wpointer-arith -Wno-unused-parameter -Werror -g '-Wno-error' -I src/core -I src/event -I src/event/modules -I src/os/unix -I /home/vencol/code/nginx/src/nginx-http-flv-module-1.2.8 -I /home/vencol/code/nginx/src/pcre-8.44 -I /home/vencol/code/nginx/src/openssl-openssl-3.0.0-alpha11/.openssl/include -I /home/vencol/code/nginx/src/zlib-1.2.11 -I out \
+							        -o out/src/core/ngx_rwlock.o \
+									        src/core/ngx_rwlock.c
+											src/core/ngx_rwlock.c:125:2: error: #error ngx_atomic_cmp_set() is not defined!
+											 #error ngx_atomic_cmp_set() is not defined!
+											  ^~~~~
+											  make[1]: *** [out/Makefile:711: out/src/core/ngx_rwlock.o] Error 1
+											  make[1]: Leaving directory '/home/vencol/code/nginx/src/nginx-release-1.19.6'
+											  make: *** [Makefile:8: build] Error 2
+
