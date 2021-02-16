@@ -154,7 +154,7 @@ int main(int argc, char **argv)
 	event_req.eventflags = GPIOEVENT_REQUEST_BOTH_EDGES;//GPIOEVENT_REQUEST_RISING_EDGE;
  
 	ret = ioctl(fd, GPIO_GET_LINEEVENT_IOCTL, &event_req);	// event测试的时候用这个
-	if (ret == -1) {
+	if (ret < 0) {
 		ret = -errno;
 		fprintf(stderr, "Failed to issue GET LINEHANDLE IOCTL (%d)\n", ret);
 	}
@@ -169,7 +169,7 @@ int main(int argc, char **argv)
 	 
 	/* release line */
 	ret = close(fd);
-	if (ret == -1) {
+	if (ret < 0) {
 		perror("Failed to close GPIO LINEHANDLE device file");
 		ret = -errno;
 	}

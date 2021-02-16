@@ -44,9 +44,9 @@ int main(int argc, char **argv)
     strcpy(chrdev_name, "/dev/gpiochip0");
     
     fd = open(chrdev_name, 0);
-    if (fd == -1) {
+    if (fd < 0) {
         ret = -errno;
-        fprintf(stderr, "Failed to open %s\n", chrdev_name);
+        fprintf(stderr, "Failed to open %s err:%d\n", chrdev_name, ret);
         
         return ret;
     }
@@ -58,7 +58,7 @@ int main(int argc, char **argv)
     req.lines = 1;
     
     ret = ioctl(fd, GPIO_GET_LINEHANDLE_IOCTL, &req);
-    if (ret == -1) {
+    if (ret < 0) {
         ret = -errno;
         fprintf(stderr, "Failed to issue GET LINEHANDLE IOCTL (%d)\n", ret);
     }
@@ -72,7 +72,7 @@ int main(int argc, char **argv)
         else
             data.values[0] = !data.values[0];
         ret = ioctl(req.fd, GPIOHANDLE_SET_LINE_VALUES_IOCTL, &data);
-        if (ret == -1) {
+        if (ret < 0) {
             ret = -errno;
             fprintf(stderr, "Failed to issue %s (%d)\n", "GPIOHANDLE_SET_LINE_VALUES_IOCTL", ret);
         }
@@ -84,7 +84,7 @@ int main(int argc, char **argv)
     perror("maybe CTRL+C enter");
     /* release line */
     ret = close(req.fd);
-    if (ret == -1) {
+    if (ret < 0) {
         perror("Failed to close GPIO LINEHANDLE device file");
         ret = -errno;
     }

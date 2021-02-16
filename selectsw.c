@@ -35,11 +35,6 @@ int main(int argc, char **argv)
         return 0;
     }
 
-    if(argc !=1)    {
-        printf("Usage : %s ",argv[0]);
-        return 0;
-    }
-
 
     FD_ZERO(&key_fds);
     FD_SET(fd, &key_fds);
